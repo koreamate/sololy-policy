@@ -1,32 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fanlens — 개인정보처리방침 / Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-Fanlens 개인정보처리방침
-최종 업데이트: 2026년 3월 21일
-1. 수집하는 정보
-Fanlens는 서버 없이 기기 내에서만 동작합니다. 수집하는 정보는 다음과 같습니다.
+    body {
+      background: #0D0D0D;
+      color: #F2F2F2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-사진 및 갤러리 접근 (사용자가 직접 선택한 사진만)
-사진 EXIF 데이터 (촬영 날짜, GPS 위치)
-카메라 접근 (촬영 기능 사용 시)
-얼굴 특징 데이터 (기기 내 저장, 외부 전송 없음)
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
 
-2. 정보 사용 목적
+    .logo {
+      text-align: center;
+      margin-bottom: 48px;
+    }
 
-연예인 사진 분류 및 앨범 관리
-얼굴인식을 통한 자동 태깅
-사진 메타데이터 기반 자동 정렬
+    .logo h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #C8A96E;
+      letter-spacing: 2px;
+    }
 
-3. 정보 저장 및 보안
+    .logo p {
+      color: #666;
+      font-size: 13px;
+      margin-top: 6px;
+    }
 
-모든 데이터는 기기 내 SQLite DB에만 저장
-외부 서버로 전송되지 않음
-앱 삭제 시 모든 데이터 삭제됨
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
 
-4. 제3자 서비스
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid rgba(200, 169, 110, 0.3);
+      color: #A0A0A0;
+      padding: 8px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-Google AdMob (광고): Google 개인정보처리방침 적용
-Apple ML Kit / Google ML Kit (얼굴인식): 온디바이스 처리, 데이터 외부 전송 없음
+    .lang-switch button.active {
+      background: rgba(200, 169, 110, 0.15);
+      border-color: #C8A96E;
+      color: #C8A96E;
+    }
 
-5. 아동 개인정보
-본 앱은 13세 미만 아동을 대상으로 하지 않습니다.
-6. 문의
-이메일: smyjh0@gmail.com
+    .lang-switch button:hover {
+      border-color: #C8A96E;
+      color: #C8A96E;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .effective {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #C8A96E;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    }
+
+    h3 {
+      color: #F2F2F2;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #A0A0A0;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      color: #A0A0A0;
+      font-size: 14px;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #C8A96E;
+      opacity: 0.5;
+    }
+
+    .highlight {
+      background: rgba(200, 169, 110, 0.08);
+      border-left: 3px solid #C8A96E;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .highlight p {
+      color: #D4D4D4;
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #C8A96E;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #C8A96E;
+    }
+
+    .contact-box {
+      background: #1A1A1A;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: #A0A0A0;
+      font-size: 14px;
+    }
+
+    .contact-box a {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: #444;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <h1>FANLENS</h1>
+    <p>Celebrity Photo Album App</p>
+  </div>
+
+  <div class="lang-switch">
+    <button id="btn-ko" class="active" onclick="switchLang('ko')">한국어</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 한국어 -->
+  <div id="section-ko" class="section active">
+    <p class="effective">시행일: 2026년 3월 21일</p>
+
+    <div class="highlight">
+      <p>Fanlens는 서버를 사용하지 않으며, 모든 데이터는 사용자의 기기 내에서만 저장·처리됩니다. 외부로 전송되는 개인정보는 없습니다.</p>
+    </div>
+
+    <h2>1. 수집하는 정보</h2>
+    <p>Fanlens는 다음 정보를 <strong>기기 내에서만</strong> 처리합니다.</p>
+    <ul>
+      <li>사진 파일 경로 및 EXIF 메타데이터 (촬영일시, GPS 위치)</li>
+      <li>얼굴인식을 위한 얼굴 특징 벡터 (온디바이스 ML Kit 처리)</li>
+      <li>사용자가 입력한 연예인 정보 (이름, 국적, 생년월일 등)</li>
+      <li>앱 설정값 (테마, 언어, 신뢰도 기준값 등)</li>
+    </ul>
+
+    <h2>2. 정보의 저장 및 처리</h2>
+    <ul>
+      <li>모든 데이터는 기기 내 SQLite 데이터베이스에 저장됩니다.</li>
+      <li>얼굴인식은 Google ML Kit을 사용하여 기기 내에서만 수행됩니다.</li>
+      <li>사진 원본은 복사하지 않으며, 기기 갤러리의 파일 경로만 참조합니다.</li>
+      <li>외부 서버로 데이터를 전송하거나 클라우드에 업로드하지 않습니다.</li>
+    </ul>
+
+    <h2>3. 앱 권한</h2>
+    <p>Fanlens는 다음 기기 권한을 요청합니다.</p>
+    <ul>
+      <li><strong>카메라</strong> — 사진 촬영 및 실시간 얼굴인식</li>
+      <li><strong>사진 라이브러리</strong> — 갤러리 사진 불러오기</li>
+      <li><strong>위치</strong> — 사진 촬영 시 위치 정보 기록 (선택사항)</li>
+    </ul>
+
+    <h2>4. 광고</h2>
+    <p>Fanlens는 Google AdMob을 통해 배너 및 네이티브 광고를 표시합니다. AdMob은 광고 제공을 위해 기기 식별자 및 광고 ID를 수집할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.</p>
+    <p>인앱 구매를 통해 광고를 제거할 수 있습니다.</p>
+
+    <h2>5. 제3자 제공</h2>
+    <p>Fanlens는 사용자의 개인정보를 제3자에게 제공하지 않습니다. 광고 SDK(AdMob)를 제외하고 외부 서비스와 데이터를 공유하지 않습니다.</p>
+
+    <h2>6. 데이터 삭제</h2>
+    <p>앱 설정에서 "DB 초기화"를 선택하면 모든 앱 데이터가 즉시 삭제됩니다. 앱을 삭제하면 기기 내 모든 Fanlens 데이터가 자동으로 제거됩니다.</p>
+
+    <h2>7. 아동 개인정보</h2>
+    <p>Fanlens는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+
+    <h2>8. 방침 변경</h2>
+    <p>본 개인정보처리방침이 변경될 경우, 앱 업데이트 또는 본 페이지를 통해 사전 고지합니다.</p>
+
+    <div class="contact-box">
+      <p>문의사항이 있으시면 아래로 연락해 주세요.</p>
+      <p style="margin-top: 12px;"><a href="mailto:smyjh0@gmail.com">smyjh0@gmail.com</a></p>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div id="section-en" class="section">
+    <p class="effective">Effective: March 21, 2026</p>
+
+    <div class="highlight">
+      <p>Fanlens does not use any servers. All data is stored and processed exclusively on your device. No personal information is transmitted externally.</p>
+    </div>
+
+    <h2>1. Information We Process</h2>
+    <p>Fanlens processes the following information <strong>on-device only</strong>:</p>
+    <ul>
+      <li>Photo file paths and EXIF metadata (date taken, GPS location)</li>
+      <li>Facial feature vectors for face recognition (processed on-device via ML Kit)</li>
+      <li>Celebrity information entered by the user (name, nationality, date of birth, etc.)</li>
+      <li>App settings (theme, language, confidence thresholds, etc.)</li>
+    </ul>
+
+    <h2>2. Data Storage and Processing</h2>
+    <ul>
+      <li>All data is stored in an on-device SQLite database.</li>
+      <li>Face recognition is performed entirely on-device using Google ML Kit.</li>
+      <li>Original photos are never copied — only file paths from your device gallery are referenced.</li>
+      <li>No data is transmitted to external servers or uploaded to the cloud.</li>
+    </ul>
+
+    <h2>3. App Permissions</h2>
+    <p>Fanlens requests the following device permissions:</p>
+    <ul>
+      <li><strong>Camera</strong> — Photo capture and real-time face recognition</li>
+      <li><strong>Photo Library</strong> — Access to gallery photos</li>
+      <li><strong>Location</strong> — Recording location when taking photos (optional)</li>
+    </ul>
+
+    <h2>4. Advertising</h2>
+    <p>Fanlens displays banner and native ads through Google AdMob. AdMob may collect device identifiers and advertising IDs for ad delivery. For details, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+    <p>Ads can be removed through an in-app purchase.</p>
+
+    <h2>5. Third-Party Sharing</h2>
+    <p>Fanlens does not share your personal information with third parties. Apart from the advertising SDK (AdMob), no data is shared with external services.</p>
+
+    <h2>6. Data Deletion</h2>
+    <p>You can delete all app data instantly by selecting "Reset Database" in the app settings. Uninstalling the app will automatically remove all Fanlens data from your device.</p>
+
+    <h2>7. Children's Privacy</h2>
+    <p>Fanlens does not knowingly collect personal information from children under the age of 14.</p>
+
+    <h2>8. Policy Changes</h2>
+    <p>If this privacy policy is updated, we will provide notice through an app update or this page.</p>
+
+    <div class="contact-box">
+      <p>If you have any questions, please contact us at:</p>
+      <p style="margin-top: 12px;"><a href="mailto:smyjh0@gmail.com">smyjh0@gmail.com</a></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Fanlens. All rights reserved.</p>
+  </div>
+</div>
+
+<script>
+  function switchLang(lang) {
+    document.getElementById('section-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('section-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
